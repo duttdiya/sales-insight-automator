@@ -1,0 +1,19 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Sales Insight API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/upload": {
+      "post": {
+        "summary": "Upload sales file",
+        "responses": {
+          "200": {
+            "description": "Summary generated"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Sales Insight Tool</title>
+  </head>
+
+  <body>
+    <h2>Upload Sales File</h2>
+
+    <input type="file" id="file" />
+    <input type="email" id="email" placeholder="Enter email" />
+
+    <button onclick="upload()">Upload</button>
+
+    <p id="status"></p>
+
+    <script>
+      async function upload() {
+        const file = document.getElementById("file").files[0];
+        const email = document.getElementById("email").value;
+
+        const formData = new FormData();
+
+        formData.append("file", file);
+        formData.append("email", email);
+
+        document.getElementById("status").innerText = "Processing...";
+
+        const res = await fetch("http://localhost:8000/api/upload", {
+          method: "POST",
+          body: formData,
+        });
+
+        const data = await res.json();
+
+        document.getElementById("status").innerText = data.message;
+      }
+    </script>
+  </body>
+</html>
